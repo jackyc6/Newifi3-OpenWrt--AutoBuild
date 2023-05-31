@@ -26,7 +26,7 @@ cat feeds.conf.default
 #rm -rf ./feeds/packages/net/mosdns && cp -r -f ./feeds/smpackage/mosdns ./feeds/packages/net/mosdns
 
 # 添加第三方软件包
-#git clone https://github.com/kenzok8/small-package package/small-package
+git clone https://github.com/kenzok8/small-package package/small-package
 #git clone https://github.com/kenzok8/openwrt-packages package/openwrt-packages
 #git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 #git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
@@ -43,14 +43,14 @@ git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git packag
 #svn co https://github.com/kenzok8/openwrt-packages/tree/master/luci-app-openclash ../package/luci-app-openclash
 
 # 替换更新插件
-#rm -rf package/openwrt-packages/luci-app-passwall && svn co https://github.com/Lienol/openwrt-package/trunk/lienol/luci-app-passwall package/openwrt-packages/luci-app-passwall
+rm -rf package/openwrt-packages/luci-app-passwall && svn co https://github.com/xiaorouji/openwrt-passwall package/openwrt-packages/luci-app-passwall
 #rm -rf package/openwrt-packages/luci-app-ssr-plus && svn co https://github.com/fw876/helloworld package/openwrt-packages/helloworld
 #rm -rf package/openwrt-packages/adguardhome && svn co https://github.com/Lienol/openwrt/tree/dev-19.07/package/diy/adguardhome package/openwrt-packages/adguardhome
 #rm -rf package/openwrt-packages/luci-app-adguardhome && svn co https://github.com/kongfl888/luci-app-adguardhome package/openwrt-packages/luci-app-adguardhome
 #rm -rf package/openwrt-packages/luci-app-clash && svn co https://github.com/frainzy1477/luci-app-clash package/openwrt-packages/luci-app-clash
 
 # 添加passwall依赖库
-#git clone https://github.com/kenzok8/small package/small
+git clone https://github.com/kenzok8/small package/small
 #svn co https://github.com/Lienol/openwrt-package/tree/master/package package/small
 
 # 替换更新haproxy默认版本
@@ -163,16 +163,16 @@ EOF
 #EOF
 
 # Passwall插件:
-#cat >> .config <<EOF
-#CONFIG_PACKAGE_luci-app-passwall2=y
-#CONFIG_PACKAGE_https-dns-proxy=y
-#CONFIG_PACKAGE_naiveproxy=y
-#CONFIG_PACKAGE_kcptun-client=y
-#CONFIG_PACKAGE_chinadns-ng=y
-#CONFIG_PACKAGE_brook=y
-#CONFIG_PACKAGE_trojan-go=y
-#CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
-#EOF
+cat >> .config <<EOF
+CONFIG_PACKAGE_luci-app-passwall2=y
+CONFIG_PACKAGE_https-dns-proxy=y
+CONFIG_PACKAGE_naiveproxy=y
+CONFIG_PACKAGE_kcptun-client=y
+ONFIG_PACKAGE_chinadns-ng=y
+CONFIG_PACKAGE_brook=y
+CONFIG_PACKAGE_trojan-go=y
+CONFIG_PACKAGE_shadowsocks-rust-sslocal=y
+EOF
 
 # 常用LuCI插件:
 cat >> .config <<EOF
@@ -183,9 +183,9 @@ CONFIG_PACKAGE_luci-app-guest-wifi=y
 #CONFIG_PACKAGE_luci-app-mosdns=y
 #CONFIG_PACKAGE_luci-app-webadmin=n #Web管理页面设置
 #CONFIG_PACKAGE_luci-app-ddns=y #DDNS服务
-CONFIG_PACKAGE_luci-app-vlmcsd=n #KMS激活服务器
+#CONFIG_PACKAGE_luci-app-vlmcsd=n #KMS激活服务器
 #CONFIG_PACKAGE_luci-app-filetransfer=y #系统-文件传输
-CONFIG_PACKAGE_luci-app-autoreboot=y #定时重启
+#CONFIG_PACKAGE_luci-app-autoreboot=y #定时重启
 #CONFIG_PACKAGE_luci-app-upnp=y #通用即插即用UPnP(端口自动转发)
 #CONFIG_PACKAGE_luci-app-accesscontrol=y #上网时间控制
 CONFIG_PACKAGE_luci-app-wol=y #网络唤醒
